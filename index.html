@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="stylesheet" type="text/css" href="./css/reset.css">
+  <link rel="stylesheet" type="text/css" href="./css/styles.css">
+  <script type="text/javascript" src="./js/form.js"></script>
+  <title>Frontend Mentor | Todo app</title>
+</head>
+<body>
+  <header>
+    <h1>Todo</h1>
+    <button>
+      <img id="icon-moon" src="./images/icon-moon.svg" alt="icon-moon" />
+    </button>
+    <form>
+      <label>
+        <button class="btn-update"></button>
+        <input id="todo-create" type="text" placeholder="Create a new todo.." />
+      </label>
+    </form>
+  </header>
+  <main>
+    <div class="main-todos">
+      <ul id="list-todos">
+        <li class="list-item-todo">
+          <span class="btn-update"></span>
+          <span class="todo-description">Jog around the park 3x</span>
+          <button class="btn-delete">
+            <img class="icon-cross" src="./images/icon-cross.svg" alt="icon-close" />
+          </button>
+        </li>
+      </ul>
+      <span><!-- Add dynamic number --> items left</span>
+      <button>Clear Completed</button>
+    </div>
+    <div id="todos-filter">
+      <ul id="list-filters">
+        <li>All</li>
+        <li>Active</li>
+        <li>Completed</li>
+      </ul>
+    </div>
+  </main>
+  <footer>
+    <span>Drag and Drop to reorder list</span>
+  </footer>
+</body>
+</html>

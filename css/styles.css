@@ -1,0 +1,108 @@
+body {
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  min-height: 100vh;
+}
+
+header {
+  background-image: url('../images/bg-mobile-light.jpg');
+  width: 100%;
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+h1 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: hsl(0, 0%, 100%);
+  letter-spacing: .5rem;
+  text-transform: uppercase;
+}
+
+h1, header > button {
+  margin-bottom: 2rem;
+}
+
+form {
+  flex: 1 100%;
+}
+
+form > label {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  background-color: hsl(0, 0%, 100%);
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+.btn-update {
+  display: block;
+  width: 16px;
+  height: 16px;
+  border: 1px solid black;
+  border-radius: 50%;
+  margin-right: .5rem;
+}
+
+main {
+  margin: -1rem 1.5rem 0 1.5rem;
+}
+
+main > div {
+  border: 1px solid black;
+  border-radius: 5px;
+  background-color: hsl(0, 0%, 100%);
+}
+
+.main-todos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+#list-todos {
+  flex: 1 100%;
+  border-bottom: 1px solid black;
+}
+
+.main-todos > span, .main-todos > button {
+  color: grey;
+  padding: 1rem;
+}
+
+.list-item-todo {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+}
+
+.list-item-todo:first-of-type {
+  border-top: none;
+}
+
+.list-item-todo:last-of-type {
+  border-bottom: none;
+}
+
+.btn-delete {
+  margin-left: auto;
+  margin-right: 0;
+}
+
+#list-filters {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 1rem;
+}
+
+footer {
+  margin: 2rem 0;
+  text-align: center;
+}
