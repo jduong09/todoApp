@@ -39,6 +39,10 @@ document.addEventListener('DOMContentLoaded', () => {
       }
       const deleteBtn = document.createElement('button');
       deleteBtn.classList.add('btn-delete');
+
+      deleteBtn.addEventListener('click', (e) => {
+        e.target.parentElement.parentElement.remove();
+      })
       const crossImg = document.createElement('img');
       crossImg.classList.add('icon-cross');
       crossImg.src = './images/icon-cross.svg';
@@ -48,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
       newListItem.append(updateBtn, descriptionSpan, deleteBtn);
       todosList.append(newListItem);
 
-      // Reset Input
+      // Reset inputCreate
       e.target.value = '';
       e.target.parentElement.children[0].classList.remove('checked');
     }
