@@ -11,8 +11,46 @@ document.addEventListener('DOMContentLoaded', () => {
   const todosList = document.getElementById('list-todos');
 
   inputCreate.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter') {
-      console.log(e.target.value);
+    if (e.key === 'Enter' && e.target.value) { // if user has pressed enter, then script should create todo item and append to todo list
+      e.preventDefault();
+      const newListItem = document.createElement('li');
+      newListItem.classList.add('list-item-todo');
+
+      const updateBtn = document.createElement('button');
+      updateBtn.classList.add('btn-update');
+
+      updateBtn.addEventListener('click', (e) => {
+        if (e.target.classList.contains('checked')) {
+          e.target.classList.remove('checked');
+          e.target.parentElement.children[1].classList.remove('checked');
+        }  else {
+          e.target.classList.add('checked');
+          e.target.parentElement.children[1].classList.add('checked');
+        }
+      });
+
+      const descriptionSpan = document.createElement('span');
+      descriptionSpan.classList.add('todo-description');
+      descriptionSpan.innerHTML = e.target.value;
+
+      if (e.target.parentElement.children[0].classList.contains('checked')) {
+        updateBtn.classList.add('checked');
+        descriptionSpan.classList.add('checked');
+      }
+      const deleteBtn = document.createElement('button');
+      deleteBtn.classList.add('btn-delete');
+      const crossImg = document.createElement('img');
+      crossImg.classList.add('icon-cross');
+      crossImg.src = './images/icon-cross.svg';
+      crossImg.alt = 'icon-close';
+      deleteBtn.append(crossImg);
+
+      newListItem.append(updateBtn, descriptionSpan, deleteBtn);
+      todosList.append(newListItem);
+
+      // Reset Input
+      e.target.value = '';
+      e.target.parentElement.children[0].classList.remove('checked');
     }
   });
 });
