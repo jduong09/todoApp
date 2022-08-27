@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
         e.target.classList.remove('checked');
         e.target.parentElement.children[1].classList.remove('checked');
 
-      }  else {
+      } else {
         e.target.classList.add('checked');
         e.target.parentElement.children[1].classList.add('checked');
       }

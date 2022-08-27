@@ -9,6 +9,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const inputCreate = document.getElementById('todo-create');
 
   const todosList = document.getElementById('list-todos');
+  const itemsLeftSpan = document.querySelector('div.main-todos > span');
+  itemsLeftSpan.innerHTML = todosList.children.length === 1 ? `${todosList.children.length} item left` : `${todosList.children.length} items left`;
+  if (todosList.children.length === 0) {
+    todosList.classList.add('empty');
+  }
 
   inputCreate.addEventListener('keydown', (e) => {
     if (e.key === 'Enter' && e.target.value) { // if user has pressed enter, then script should create todo item and append to todo list
@@ -51,6 +56,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
       newListItem.append(updateBtn, descriptionSpan, deleteBtn);
       todosList.append(newListItem);
+      itemsLeftSpan.innerHTML = todosList.children.length === 1 ? `${todosList.children.length} item left` : `${todosList.children.length} items left`;
+
+      if (todosList.classList.contains('empty')) {
+        todosList.classList.remove('empty');
+      }
 
       // Reset inputCreate
       e.target.value = '';

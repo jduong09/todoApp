@@ -13,6 +13,7 @@
   <script type="text/javascript" src="./js/form.js"></script>
   <script type="text/javascript" src="./js/toggle_btn.js"></script>
   <script type="text/javascript" src="./js/delete_btn.js"></script>
+  <script type="text/javascript" src="./js/filter.js"></script>
   <title>Frontend Mentor | Todo app</title>
 </head>
 <body>
@@ -39,14 +40,14 @@
           </button>
         </li>
       </ul>
-      <span><!-- Add dynamic number --> items left</span>
-      <button>Clear Completed</button>
+      <span></span>
+      <button id="btn-clear">Clear Completed</button>
     </div>
     <div id="todos-filter">
       <ul id="list-filters">
-        <li class="selected">All</li>
-        <li>Active</li>
-        <li>Completed</li>
+        <li id="filter-all" class="selected">All</li>
+        <li id="filter-active">Active</li>
+        <li id="filter-completed">Completed</li>
       </ul>
     </div>
   </main>

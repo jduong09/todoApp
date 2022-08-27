@@ -12,6 +12,10 @@ input:-webkit-autofill:active{
     -webkit-box-shadow: 0 0 0 35px white inset !important;
 }
 
+.hide {
+  display: none !important;
+}
+
 header {
   background-image: url('../images/bg-mobile-light.jpg');
   width: 100%;
@@ -107,6 +111,10 @@ main > div {
   border-bottom: 1.5px solid hsl(236, 33%, 92%);
 }
 
+#list-todos.empty {
+  border: none;
+}
+
 .main-todos > span, .main-todos > button {
   color: grey;
   padding: 1rem;
@@ -152,6 +160,7 @@ main > div {
   font-size: 1rem;
   font-weight: 700;
   color: hsl(236, 9%, 61%);
+  cursor: pointer;
 }
 
 #list-filters > li.selected {
