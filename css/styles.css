@@ -8,7 +8,7 @@ body {
 input:-webkit-autofill,
 input:-webkit-autofill:hover, 
 input:-webkit-autofill:focus, 
-input:-webkit-autofill:active{
+input:-webkit-autofill:active {
     -webkit-box-shadow: 0 0 0 35px white inset !important;
 }
 
@@ -35,6 +35,10 @@ h1 {
 
 h1, header > button {
   margin-bottom: 2rem;
+}
+
+#icon-sun {
+  content: url('../images/icon-sun.svg');
 }
 
 form {
@@ -71,7 +75,7 @@ label > input:active {
   display: block;
   width: 18px;
   height: 18px;
-  border: 1.5px solid hsl(236, 33%, 92%);
+  border: 2px solid hsl(236, 33%, 92%);
   border-radius: 50%;
   margin: 1rem;
   position: relative;
@@ -108,7 +112,6 @@ main > div {
 
 #list-todos {
   flex: 1 100%;
-  border-bottom: 1.5px solid hsl(236, 33%, 92%);
 }
 
 #list-todos.empty {
@@ -118,6 +121,8 @@ main > div {
 .main-todos > span, .main-todos > button {
   color: grey;
   padding: 1rem;
+  flex: 2;
+  border-top: 1px solid hsl(236, 33%, 92%);
 }
 
 .list-item-todo {
@@ -144,8 +149,17 @@ main > div {
   margin: 1rem 1rem 1rem auto;
 }
 
+.icon-cross {
+  cursor: pointer;
+}
+
+#btn-clear {
+  cursor: pointer;
+}
+
 #todos-filter {
   box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15);
+  color: hsl(236, 9%, 61%);
 }
 
 #list-filters {
@@ -159,7 +173,6 @@ main > div {
 #list-filters > li {
   font-size: 1rem;
   font-weight: 700;
-  color: hsl(236, 9%, 61%);
   cursor: pointer;
 }
 
@@ -170,4 +183,57 @@ main > div {
 footer {
   margin: 2rem 0;
   text-align: center;
+}
+
+/* Dark Mode */
+body.dark {
+  background-color: hsl(235, 21%, 11%);
+}
+
+header.dark {
+  background-image: url('../images/bg-mobile-dark.jpg');
+}
+
+header.dark label, header.dark input, header.dark input:focus, header.dark input:active {
+  background-color: hsl(237, 14%, 26%);
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+header.dark input:-webkit-autofill,
+header.dark input:-webkit-autofill:hover,
+header.dark input:-webkit-autofill:focus,
+header.dark input:-webkit-autofill:active {
+  /* Solution for input autofill on google chrome. Keeps control of text color and background color */
+  -webkit-box-shadow: 0 0 0 35px hsl(237, 14%, 26%) inset !important; 
+  -webkit-text-fill-color: hsl(234, 39%, 85%);
+}
+
+header.dark .btn-update, main.dark .btn-update {
+  border-color: hsl(233, 14%, 35%);
+}
+
+header.dark input::placeholder {
+  color: hsl(234, 11%, 52%);
+}
+
+header.dark input:focus {
+  color: hsl(234, 39%, 85%);
+}
+
+main.dark > div {
+  background-color: hsl(237, 14%, 26%);
+  color: hsl(234, 39%, 85%);
+}
+
+main.dark > .main-todos > span, main.dark > .main-todos > button, main.dark > #todos-filter, footer.dark {
+  color: hsl(234, 11%, 52%);
+}
+
+main.dark > .main-todos > span, main.dark > .main-todos > button, main.dark .list-item-todo {
+  border-color: hsl(233, 14%, 35%);
+}
+
+main.dark .icon-cross > path {
+  fill: hsl(234, 11%, 52%);
 }

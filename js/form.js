@@ -47,12 +47,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
       deleteBtn.addEventListener('click', (e) => {
         e.target.parentElement.parentElement.remove();
-      })
-      const crossImg = document.createElement('img');
-      crossImg.classList.add('icon-cross');
-      crossImg.src = './images/icon-cross.svg';
-      crossImg.alt = 'icon-close';
-      deleteBtn.append(crossImg);
+      });
+
+      /* <svg class="icon-cross" xmlns="http://www.w3.org/2000/svg" width="18" height="18">
+      <path fill="#494C6B" fill-rule="evenodd"
+       d="M16.97 0l.708.707L9.546 8.84l8.132 8.132-.707.707-8.132-8.132-8.132 8.132L0 16.97l8.132-8.132L0 .707.707 0 8.84 8.132 16.971 0z"/></svg> */
+      const crossSvg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+
+      const width = 18;
+      const height = 18;
+      crossSvg.setAttributeNS(null, 'width', width);
+      crossSvg.setAttributeNS(null, 'height', height);
+      crossSvg.classList.add('icon-cross');
+
+      const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+      path.setAttributeNS(null, 'fill', '#494C6B');
+      path.setAttributeNS(null, 'fill-rule', 'evenodd');
+      path.setAttributeNS(null, 'd', 'M16.97 0l.708.707L9.546 8.84l8.132 8.132-.707.707-8.132-8.132-8.132 8.132L0 16.97l8.132-8.132L0 .707.707 0 8.84 8.132 16.971 0z');
+
+      crossSvg.appendChild(path);
+      deleteBtn.append(crossSvg);
 
       newListItem.append(updateBtn, descriptionSpan, deleteBtn);
       todosList.append(newListItem);
