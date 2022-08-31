@@ -10,6 +10,7 @@ input:-webkit-autofill:hover,
 input:-webkit-autofill:focus, 
 input:-webkit-autofill:active {
     -webkit-box-shadow: 0 0 0 35px white inset !important;
+    -webkit-text-fill-color: hsl(235, 19%, 35%);
 }
 
 .hide {
@@ -20,9 +21,13 @@ header {
   background-image: url('../images/bg-mobile-light.jpg');
   width: 100%;
   padding: 2rem 1.5rem;
+}
+
+header > div {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  width: 100%;
 }
 
 h1 {
@@ -33,7 +38,7 @@ h1 {
   text-transform: uppercase;
 }
 
-h1, header > button {
+h1, header > div > button {
   margin-bottom: 2rem;
 }
 
@@ -65,6 +70,7 @@ label > input:focus {
   outline: none;
   border: none;
   background: hsl(0, 0%, 100%);
+  color: hsl(235, 19%, 35%);
 }
 
 label > input:active {
@@ -83,6 +89,7 @@ label > input:active {
 
 .btn-update.checked {
   background: linear-gradient(120deg, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+  border: none;
 }
 
 .btn-update.checked::after {
@@ -119,7 +126,7 @@ main > div {
 }
 
 .main-todos > span, .main-todos > button {
-  color: grey;
+  color: hsl(236, 9%, 61%);
   padding: 1rem;
   flex: 2;
   border-top: 1px solid hsl(236, 33%, 92%);
@@ -129,7 +136,7 @@ main > div {
   display: flex;
   align-items: center;
   border-top: 1px solid hsl(236, 33%, 92%);
-  border-bottom: 1px solid hsl(236, 33%, 92%);
+  color: hsl(235, 19%, 35%);
 }
 
 .list-item-todo:first-of-type {
@@ -143,6 +150,7 @@ main > div {
 
 .todo-description.checked {
   text-decoration: line-through;
+  color: hsl(233, 11%, 84%);
 }
 
 .btn-delete {
@@ -153,8 +161,13 @@ main > div {
   cursor: pointer;
 }
 
+.icon-cross > path {
+  fill: hsl(236, 9%, 61%);
+}
+
 #btn-clear {
   cursor: pointer;
+  text-align: end;
 }
 
 #todos-filter {
@@ -183,6 +196,7 @@ main > div {
 footer {
   margin: 2rem 0;
   text-align: center;
+  color: hsl(236, 9%, 61%);
 }
 
 /* Dark Mode */
@@ -221,7 +235,7 @@ header.dark input:focus {
   color: hsl(234, 39%, 85%);
 }
 
-main.dark > div {
+main.dark > div, main.dark .list-item-todo {
   background-color: hsl(237, 14%, 26%);
   color: hsl(234, 39%, 85%);
 }
@@ -234,6 +248,71 @@ main.dark > .main-todos > span, main.dark > .main-todos > button, main.dark .lis
   border-color: hsl(233, 14%, 35%);
 }
 
+main.dark .todo-description.checked {
+  color: hsl(233, 14%, 35%);
+}
+
 main.dark .icon-cross > path {
   fill: hsl(234, 11%, 52%);
+}
+
+@media (min-width: 376px) {
+  header {
+    background-image: url('../images/bg-desktop-light.jpg');
+  }
+
+  header.dark {
+    background-image: url('../images/bg-desktop-dark.jpg')
+  }
+}
+
+@media (min-width: 576px) {
+  header {
+    padding: 2rem 0;
+  }
+  header > div {
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  main {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media (min-width: 768px) {
+  header {
+    padding-top: 4rem
+  }
+  header > div, main {
+    width: 70%;
+  }
+}
+
+@media (min-width: 992px) {
+  header > div, main {
+    width: 55%;
+  }
+
+  #todos-filter.desktop {
+    box-shadow: none;
+    border-top: 1px solid hsl(236, 33%, 92%);
+    flex: 3;
+  }
+
+  main.dark #todos-filter.desktop {
+    border-color: hsl(233, 14%, 35%);
+  }
+
+  #todos-filter.desktop > ul > li {
+    font-weight: 400;
+  }
+}
+
+@media (min-width: 1200px) {
+  header > div, main {
+    width: 40%;
+  }
 }
