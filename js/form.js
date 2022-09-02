@@ -32,6 +32,15 @@ document.addEventListener('DOMContentLoaded', () => {
           e.target.classList.add('checked');
           e.target.parentElement.children[1].classList.add('checked');
         }
+
+        let itemsLeft = 0;
+        for (let j = 0; j < todosList.children.length; j++) {
+          if (!todosList.children[j].children[0].classList.contains('checked')) {
+            itemsLeft++;
+          }
+        }
+  
+        itemsLeftSpan.innerHTML = itemsLeft === 1 ? `${itemsLeft} item left` : `${itemsLeft} items left`;
       });
 
       const descriptionSpan = document.createElement('span');
@@ -49,9 +58,6 @@ document.addEventListener('DOMContentLoaded', () => {
         e.target.parentElement.parentElement.remove();
       });
 
-      /* <svg class="icon-cross" xmlns="http://www.w3.org/2000/svg" width="18" height="18">
-      <path fill="#494C6B" fill-rule="evenodd"
-       d="M16.97 0l.708.707L9.546 8.84l8.132 8.132-.707.707-8.132-8.132-8.132 8.132L0 16.97l8.132-8.132L0 .707.707 0 8.84 8.132 16.971 0z"/></svg> */
       const crossSvg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
 
       const width = 18;
@@ -70,7 +76,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
       newListItem.append(updateBtn, descriptionSpan, deleteBtn);
       todosList.append(newListItem);
-      itemsLeftSpan.innerHTML = todosList.children.length === 1 ? `${todosList.children.length} item left` : `${todosList.children.length} items left`;
+
+      let itemsLeft = 0;
+      for (let j = 0; j < todosList.children.length; j++) {
+        if (!todosList.children[j].children[0].classList.contains('checked')) {
+          itemsLeft++;
+        }
+      }
+
+      itemsLeftSpan.innerHTML = itemsLeft === 1 ? `${itemsLeft} item left` : `${itemsLeft} items left`;
 
       if (todosList.classList.contains('empty')) {
         todosList.classList.remove('empty');

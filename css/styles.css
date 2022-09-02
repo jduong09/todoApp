@@ -27,6 +27,7 @@ header > div {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  align-items: center;
   width: 100%;
 }
 
@@ -40,6 +41,11 @@ h1 {
 
 h1, header > div > button {
   margin-bottom: 2rem;
+}
+
+header > div > button > img {
+  width: 26px;
+  height: 26px;
 }
 
 #icon-sun {
@@ -129,23 +135,13 @@ main > div {
   color: hsl(236, 9%, 61%);
   padding: 1rem;
   flex: 2;
-  border-top: 1px solid hsl(236, 33%, 92%);
 }
 
 .list-item-todo {
   display: flex;
   align-items: center;
-  border-top: 1px solid hsl(236, 33%, 92%);
+  border-bottom: 1px solid hsl(236, 33%, 92%);
   color: hsl(235, 19%, 35%);
-}
-
-.list-item-todo:first-of-type {
-  border-top: none;
-  border-bottom: none;
-}
-
-.list-item-todo:last-of-type {
-  border-bottom: none;
 }
 
 .todo-description.checked {
@@ -298,7 +294,6 @@ main.dark .icon-cross > path {
 
   #todos-filter.desktop {
     box-shadow: none;
-    border-top: 1px solid hsl(236, 33%, 92%);
     flex: 3;
   }
 
@@ -314,5 +309,30 @@ main.dark .icon-cross > path {
 @media (min-width: 1200px) {
   header > div, main {
     width: 40%;
+  }
+}
+
+@media (min-width: 1440px) {
+  header {
+    background-size: cover;
+    height: 300px;
+    padding-top: 5rem;
+  }
+
+  h1 {
+    font-size: 2.25rem;
+    letter-spacing: 1rem;
+  }
+
+  header > div, main {
+    width: 38%;
+  }
+
+  h1, header > div > button {
+    margin-bottom: 2.5rem;
+  }
+
+  main {
+    margin-top: -3.5rem;
   }
 }
