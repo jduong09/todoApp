@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
       deleteBtn.classList.add('btn-delete');
 
       deleteBtn.addEventListener('click', (e) => {
-        e.target.parentElement.parentElement.remove();
+        e.currentTarget.parentElement.remove();
       });
 
       const crossSvg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');

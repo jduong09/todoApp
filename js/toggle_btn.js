@@ -28,6 +28,5 @@ document.addEventListener('DOMContentLoaded', () => {
   
       itemsLeftSpan.innerHTML = itemsLeft === 1 ? `${itemsLeft} item left` : `${itemsLeft} items left`;
     });
-
   }
 });

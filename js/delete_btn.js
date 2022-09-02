@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   for (let i = 0; i < deleteBtns.length; i++) {
     deleteBtns[i].addEventListener('click', (e) => {
-      e.target.parentElement.parentElement.remove();
+      e.currentTarget.parentElement.remove();
 
       if (todosList.children.length === 0) {
         todosList.classList.add('empty');
@@ -16,13 +16,18 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  clearCompletedBtn.addEventListener('click', () => {
+  clearCompletedBtn.addEventListener('click', (e) => {
     const currentTodoList = document.getElementsByClassName('list-item-todo');
     const copiedTodoList = Array.from(currentTodoList);
 
     const activeTodoList = copiedTodoList.filter((todoItem) => {
       return !todoItem.children[0].classList.contains('checked');
     });
+
+    if (currentTodoList.length === activeTodoList.length) {
+      e.preventDefault = true;
+      return;
+    }
 
     const updatedTodoList = document.createElement('ul');
     updatedTodoList.id = 'list-todos';
@@ -34,12 +39,41 @@ document.addEventListener('DOMContentLoaded', () => {
       const spanBtnUpdate = document.createElement('span');
       spanBtnUpdate.classList.add('btn-update');
 
+      spanBtnUpdate.addEventListener('click', (e) => {
+        if (e.target.classList.contains('checked')) {
+          e.target.classList.remove('checked');
+          e.target.parentElement.children[1].classList.remove('checked');
+  
+        } else {
+          e.target.classList.add('checked');
+          e.target.parentElement.children[1].classList.add('checked');
+        }
+        let itemsLeft = 0;
+        for (let j = 0; j < todosList.children.length; j++) {
+          if (!todosList.children[j].children[0].classList.contains('checked')) {
+            itemsLeft++;
+          }
+        }
+    
+        itemsLeftSpan.innerHTML = itemsLeft === 1 ? `${itemsLeft} item left` : `${itemsLeft} items left`;
+      });
+
       const spanTodoDescription = document.createElement('span');
       spanTodoDescription.classList.add('todo-description');
       spanTodoDescription.innerHTML = todoItem.children[1].innerHTML;
 
       const btnDelete = document.createElement('button');
       btnDelete.classList.add('btn-delete');
+
+      btnDelete.addEventListener('click', (e) => {
+        e.currentTarget.parentElement.remove();
+
+        if (todosList.children.length === 0) {
+          todosList.classList.add('empty');
+        } 
+          
+        itemsLeftSpan.innerHTML = todosList.children.length === 1 ? `${todosList.children.length} item left` : `${todosList.children.length} items left`;
+      });
 
       const crossSvg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
 
