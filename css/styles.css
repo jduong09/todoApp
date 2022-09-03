@@ -336,3 +336,12 @@ main.dark .icon-cross > path {
     margin-top: -3.5rem;
   }
 }
+
+.dropzone {
+  height: 62px;
+  border: 1px solid black;
+}
+
+.dragover {
+  background-color: black;
+}
