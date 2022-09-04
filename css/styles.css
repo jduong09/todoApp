@@ -337,11 +337,10 @@ main.dark .icon-cross > path {
   }
 }
 
-.dropzone {
-  height: 62px;
-  border: 1px solid black;
+.dragover {
+  opacity: .1;
 }
 
-.dragover {
-  background-color: black;
+.list-item-todo.dragging {
+  opacity: .1;
 }

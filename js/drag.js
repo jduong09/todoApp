@@ -1,63 +1,51 @@
 // Element needs to have property 'draggable = true'
 document.addEventListener('DOMContentLoaded', () => {
-  const listItems = document.getElementsByClassName('list-item-todo');
   const todoItemsList = document.getElementById('list-todos');
-  for (let i = 0; i < listItems.length; i++) {
-    // drag, dragstart, dratend, dragenter, dragleave, drop
-    let dragged;
-    listItems[i].addEventListener('drag', (e) => {
-      console.log('drag');
+  const todoItems = document.getElementsByClassName('list-item-todo');
+
+  for (let j = 0; j < todoItems.length; j++) {
+    // add dropzone event listeners to each current todoItem.
+    todoItems[j].classList.add('dropzone');
+
+    todoItems[j].addEventListener('dragover', (e) => {
+      e.preventDefault();
+    });
+
+    todoItems[j].addEventListener('dragenter', (e) => {
+      // highlight potential drop target when the draggable element enters it
+      if (e.target.classList.contains('dropzone')) {
+        e.target.classList.add('dragover');
+      }
+    });
+
+    todoItems[j].addEventListener('dragleave', (e) => {
+      if (e.target.classList.contains('dropzone')) {
+        e.target.classList.remove('dragover');
+      }
+    });
+
+    todoItems[j].addEventListener('drop', (e) => {
+      e.preventDefault();
+
+      if (e.target.classList.contains('dropzone')) {
+        e.target.classList.remove('dragover');
+        window.dragged.parentNode.removeChild(window.dragged);
+        todoItemsList.insertBefore(window.dragged, e.target);
+      }
+    });
+
+    todoItems[j].addEventListener('drag', (e) => {
+      e.target.classList.remove('dropzone');
     });
     // dragstart
-    listItems[i].addEventListener('dragstart', (e) => {
-      dragged = e.target;
+    todoItems[j].addEventListener('dragstart', (e) => {
+      window.dragged = e.target;
       e.target.classList.add('dragging');
     });
     // dragend
-    listItems[i].addEventListener('dragend', (e) => {
+    todoItems[j].addEventListener('dragend', (e) => {
       e.target.classList.remove('dragging');
+      e.target.classList.add('dropzone');
     });
-
-    // events fired on the drop targets
-    for (let j = 0; j < 2; j++) {
-      const dropTarget = document.createElement('li');
-      dropTarget.classList.add('dropzone');
-      dropTarget.id = 'droptarget';
-
-      if (j === 0) {
-        todoItemsList.prepend(dropTarget);
-      } else {
-        todoItemsList.appendChild(dropTarget);
-      }
-
-      dropTarget.addEventListener('dragover', (e) => {
-        e.preventDefault();
-      }, false);
-
-      // highlight potential drop target when the draggable element enters it
-      dropTarget.addEventListener('dragenter', (e) => {
-        if (e.target.classList.contains('dropzone')) {
-          e.target.classList.add('dragover');
-        }
-      });
-
-      dropTarget.addEventListener('dragleave', (e) => {
-        // reset background of potential drop target when the draggable element leaves it
-        if (e.target.classList.contains('dropzone')) {
-          e.target.classList.remove('dragover');
-        }
-      });
-
-      dropTarget.addEventListener('drop', (e) => {
-        // prevent default action (open as link for some elements)
-        e.preventDefault();
-        // move dragged element to the selected drop target
-        if (e.target.classList.contains('dropzone')) {
-          e.target.classList.remove('dragover');
-          dragged.parentNode.removeChild(dragged);
-          e.target.appendChild(dragged);
-        }
-      });
-    }
   }
 });
